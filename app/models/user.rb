@@ -10,6 +10,8 @@
 #
 
 class User < ActiveRecord::Base
+  include WithKeys
+
   has_secure_password
   validates_presence_of :password, on: :create
 

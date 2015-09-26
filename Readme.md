@@ -6,10 +6,50 @@ profiles | POST   | /profiles(.:format)     | profiles#create
          | PATCH  | /profiles/:id(.:format) | profiles#update
          | PUT    | /profiles/:id(.:format) | profiles#update
          | DELETE | /profiles/:id(.:format) | profiles#destroy
-    user | POST   | /user(.:format)         | user#create
-         | GET    | /user(.:format)         | user#show
-         | PATCH  | /user(.:format)         | user#update
-         | PUT    | /user(.:format)         | user#update
+    user | POST   | /users(.:format)         | user#create
+         | GET    | /users(.:format)         | user#show
+         | PATCH  | /users(.:format)         | user#update
+         | PUT    | /users(.:format)         | user#update
+
+### POST /users
+
+#### Request
+
+```http
+POST /users HTTP/1.1
+Accept: application/json
+
+{
+  "user":
+  {
+    "email": "angry_bowler@gmail.com",
+    "password": "[FILTERED]", 
+    "password_confirmation": "[FILTERED]"
+  }
+}
+```
+
+#### Response
+
+```http
+HTTP/1.1 201 Created
+Content-Type: application/json
+
+{
+  "id":4,
+  "email": "angry_bowler@gmail.com",
+  "created_at":"2015-09-25T21:54:31.509Z",
+  "updated_at":"2015-09-25T21:54:31.509Z"
+}
+```
+
+    Type  | Parameter Name | Description 
+  --------|---------------:|:------------
+ integer |**id**| Account id
+ integer |**email**| Account email
+ datetime|**created_at**| When the account was created
+ datetime|**updated_at**| When the account was updated
+
 
 ### POST /access
 
@@ -70,8 +110,8 @@ Content-Type: application/json
 
 {
   "id":4,
-  "name":"Dad",
-  "user_id":16,
+  "name": "Mom",
+  "user_id": 16,
   "created_at":"2015-09-25T21:54:31.509Z",
   "updated_at":"2015-09-25T21:54:31.509Z"
 }
@@ -79,8 +119,9 @@ Content-Type: application/json
 
     Type  | Parameter Name | Description 
   --------|---------------:|:------------
- integer |**id**| profile id
-   string|**name**| Individiual profile name
+ integer |**id**| Profile id
+ string |**name**| Profile name
  integer |**user_id**| Account id
  datetime|**created_at**| When the profile was created
  datetime|**updated_at**| When the profile was updated
+
