@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resource :access, only: :create, controller: :access
-  resources :profiles
+  resources :profiles, only: [:create, :update, :show, :destroy, :index]
 
   resource :user, only: [:create, :update, :show], controller: :user
 

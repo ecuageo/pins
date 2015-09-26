@@ -7,6 +7,5 @@ describe 'Profile API' do
     post '/profiles', name: 'Dad', token: token(user)
 
     expect(response.status).to eq 201
-
   end
 end
