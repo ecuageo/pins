@@ -9,6 +9,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    render json: ' ', status: :unauthorized unless current_user.present?
+
+    render json: current_user.with_keys(%w(id email created_at updated_at))
+  end
+
   private
 
   def user_params

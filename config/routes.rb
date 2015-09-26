@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resource :access, only: :create, controller: :access
   resources :profiles, only: [:create, :update, :show, :destroy, :index]
 
-  resources :users, only: [:create, :update, :show]
+  resource :users, only: [:create, :update, :show]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

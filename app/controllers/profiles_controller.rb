@@ -5,6 +5,8 @@ class ProfilesController < ApplicationController
   end
 
   def create
+    render json: ' ', status: :unauthorized unless current_user.present?
+
     profile = current_user.profiles.create(profile_params)
     if profile.valid?
       render json: profile, status: :created
