@@ -1,5 +1,9 @@
 class ProfilesController < ApplicationController
 
+  def index
+    render text: 'something'
+  end
+
   def create
     profile = current_user.profiles.create(profile_params)
     if profile.valid?
